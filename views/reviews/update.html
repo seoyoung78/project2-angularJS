@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+      update.html
+  </div>
+
+  <div class="card-body">
+    <div>
+      <div class="form-group">
+        <label>리뷰번호:</label>
+        <input class="form-control" ng-model="review.reviewNo" readonly/>
+      </div>
+      <div class="form-group">
+        <label>상품명:</label>
+        <input class="form-control" ng-model="review.productName"readonly/>
+      </div>
+      <div class="form-group">
+        <label>글쓴이:</label>
+        <input class="form-control" ng-model="review.userId" readonly/>
+      </div>
+      <div class="form-group">
+          <label>내용:</label>
+          <textarea class="form-control" ng-model="review.reviewContent"></textarea>
+      </div>
+      
+      <button class="btn btn-primary btn-sm" ng-click="updateReview(review)">수정</button>
+      <button class="btn btn-primary btn-sm" ng-click="cancel()">취소</button>        
+    </div>
+  </div>
+</div>

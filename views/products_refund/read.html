@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-header">
+      review read
+  </div>
+
+  <div class="card-body">
+      <div>
+          <div class="form-group">
+              <label>주문번호:</label>
+              <input class="form-control" value={{refund.orderNo}} readonly/>  
+          </div>
+          <div class="form-group">
+              <label>아이디:</label>
+              <input class="form-control" ng-value="refund.userId" readonly/>
+          </div>
+          <div class="form-group">
+              <label>환불사유:</label>
+              <textarea class="form-control" ng-value="refund.refundReason" readonly></textarea>
+          </div>
+          <div class="form-group">
+            <label>환불상태:</label>
+            <div ng-if="refund.refundState == 0">
+              <input class="form-control" value="환불 중" readonly/>
+            </div>   
+            <div ng-if="refund.refundState == 1">
+              <input class="form-control" value="환불 완료" readonly/>
+            </div>       
+          </div>
+          <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo)">목록</button>
+          <button class="btn btn-primary btn-sm" ng-click="updateRefundForm()">수정</button>      
+      </div>
+  </div>
+</div>

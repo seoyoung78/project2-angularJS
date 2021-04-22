@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app"> <!-- html과 script에 작성한 angularjs 연결 / ng- : angularjs 사용 -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Candy</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> 
+    
+    <script src="app.js"></script>  <!-- 모듈 생성 -->
+    <script src="appRoute.js"></script>
+
+    <script src="controllers/productsRefundController.js"></script>
+    <script src="controllers/reviewsController.js"></script>
+
+    <script src="services/loginService.js"></script>
+
+    <script src="services/reviewsService.js"></script>
+    <script src="services/productsRefundService.js"></script>
+
+</head>
+<body ng-controller="mainController">
+    <div class="d-flex justify-content-center mt-5" ng-show="!uid">
+        <div class="card" style="width: 400px;">
+            <div class="card-header">
+                Login Form
+            </div>
+            <div class="card-body justify-content-center">
+              <form>
+                <div class="form-group">
+                  <label for="uid">User ID</label>
+                  <input id="uid" type="text" class="form-control" ng-model="user.uid" autocomplete="username">
+                </div>
+                <div class="form-group">
+                  <label for="upassword">User Password</label>
+                  <input id="upassword" type="password" class="form-control" ng-model="user.upassword" autocomplete="current-password">
+                </div>
+                <button class="btn btn-primary" ng-click="login(user)">Login</button>
+              </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column vh-100" ng-show="uid">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
+            <a class="navbar-brand" href="./">
+            <img src="./resources/img/장바구니.png" width="30" class="d-inline-block align-top">
+            Santa Candy
+            </a>
+            <div>
+                <div ng-show="uid">
+                    ID: {{uid}} <button class="btn btn-success btn-sm ml-2" ng-click="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="flex-grow-1 container-fluid">
+            <div class="row h-100">
+            <div class="col-md-6 col-lg-4 p-3 bg-dark">
+                <div class="h-100 d-flex flex-column">
+                <div class="flex-grow-1" style="height:0px; overflow-y: auto; overflow-x: hidden;">
+                    <ng-include src="'appMenu.html'"></ng-include>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-8 p-3">
+                <div class=" h-100 d-flex flex-column">
+                <div class="flex-grow-1 overflow-auto pr-3" style="height:0px" >
+                    <ng-view/>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
