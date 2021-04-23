@@ -3,8 +3,8 @@ angular.module("app")
     const BASE_URL = "http://localhost:8080/products_refund";
 
       return {
-        list: function(pageNo = 1) {
-          const promise = $http.get(BASE_URL, {params:{pageNo:pageNo}}); 
+        list: function(pageNo = 1, state, reason) {
+          const promise = $http.get(BASE_URL, {params:{pageNo:pageNo, state:state, reason:reason}}); 
           return promise;
         },
 

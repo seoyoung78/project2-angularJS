@@ -11,14 +11,18 @@ angular.module("app")
     };
 
     $scope.$on("$routeChangeSuccess", () => {
-      $scope.getList(1);
+      $scope.getList(1, "전체" , "전체");
     }); 
 
-    $scope.states = ["환불 중", "환불 완료"];
+    $scope.stateList = ["전체", "환불 중", "환불 완료"];
+    $scope.stateVal = "전체";
 
-    $scope.getList = (pageNo) => {
-      productsRefundService.list(pageNo)
-        .then((response) => { //jQuery에서는 response 대신 data
+    $scope.reasonList = ["전체", "고객 변심", "상품 불량", "서비스 불만족", "늦은 배송", "기타"]
+    $scope.reasonVal = "전체";
+
+    $scope.getList = (pageNo, stateVal, reasonVal) => {
+      productsRefundService.list(pageNo, stateVal, reasonVal)
+        .then((response) => { 
           $scope.pager = response.data.pager;
           $scope.refunds = response.data.refunds;
           $scope.pageRange = [];
@@ -29,13 +33,15 @@ angular.module("app")
         });
     };
 
-    $scope.read = (orderNo) => {
+    $scope.read = (orderNo, stateVal, reasonVal) => {
       productsRefundService.read(orderNo)
         .then((response) => {
           $scope.refund = response.data;
-          $scope.view="read";       
+          $scope.view="read"; 
+          $scope.stateVal = stateVal;     
+          $scope.reasonVal = reasonVal; 
         })
-    }
+    };
 
     $scope.updateRefundForm = () => {
       $scope.view="update";
@@ -50,7 +56,9 @@ angular.module("app")
     };
 
     $scope.cancel = () => {
-      $scope.getList($scope.pager.pageNo);
+      $scope.getList($scope.pager.pageNo, "전체", "전체");
       $scope.view = "list";
+      $scope.stateVal = "전체";
+      $scope.reasonVal = "전체";
     };
   });

@@ -21,7 +21,7 @@
               <label>내용:</label>
               <textarea class="form-control" ng-value="review.reviewContent" readonly></textarea>
           </div>
-          <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo)">목록</button>
+          <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo, keyword)">목록</button>
           <button class="btn btn-primary btn-sm" ng-click="updateReviewForm()">수정</button> 
           <button class="btn btn-primary btn-sm" ng-click="deleteReview(review.reviewNo)">삭제</button>       
       </div>

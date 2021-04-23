@@ -3,8 +3,8 @@ angular.module("app")
       const BASE_URL = "http://localhost:8080/reviews";
 
       return {
-        list: function(pageNo = 1) {
-          const promise = $http.get(BASE_URL, {params:{pageNo:pageNo}}); 
+        list: function(pageNo = 1, keyword="") {
+          const promise = $http.get(BASE_URL, {params:{pageNo:pageNo, keyword:keyword}}); 
           return promise;
         },
 

@@ -10,11 +10,11 @@ angular.module("app")
     };
 
     $scope.$on("$routeChangeSuccess", () => {
-      $scope.getList(1);
+      $scope.getList(1, "");
     }); 
 
-    $scope.getList = (pageNo) => {
-      reviewsService.list(pageNo)
+    $scope.getList = (pageNo, keyword) => {
+      reviewsService.list(pageNo, keyword)
         .then((response) => { //jQuery에서는 response 대신 data
           $scope.pager = response.data.pager;
           $scope.reviews = response.data.reviews;
@@ -26,11 +26,12 @@ angular.module("app")
         });
     };
 
-    $scope.read = (reviewNo) => {
+    $scope.read = (reviewNo, keyword) => {
       reviewsService.read(reviewNo)
         .then((response) => {
           $scope.review = response.data;
           $scope.view = "read";
+          $scope.keyword = keyword;
         });
     };
 
@@ -49,14 +50,14 @@ angular.module("app")
     };
 
     $scope.cancel = () => {
-      $scope.getList($scope.pager.pageNo);
+      $scope.getList($scope.pager.pageNo, "");
       $scope.view = "list";
     };
 
     $scope.deleteReview = (reviewNo) => {
       reviewsService.delete(reviewNo)
       .then((response) => {
-        $scope.getList(1);
+        $scope.getList(1, "");
         $scope.view = "list";
       })
     };

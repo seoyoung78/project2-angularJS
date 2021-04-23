@@ -8,7 +8,7 @@ angular.module("app") // 생성된 모듈 구성
 
         //라우트 정의 - 같은 DOM 내부에서 이동할 때 사용
         $routeProvider
-            .when("/", {templateUrl: "views/exam01_home.html"})
+            .when("/", {templateUrl: "views/home.html", controller="homeController"})
 
             .when("/products_refund", {templateUrl: "views/products_refund/index.html", controller: "productsRefundController"}) 
             .when("/reviews", {templateUrl: "views/reviews/index.html", controller: "reviewsController"})
