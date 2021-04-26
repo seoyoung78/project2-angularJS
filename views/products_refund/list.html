@@ -1,25 +1,22 @@
-<div class="card">
-    <div class="card-header">
-        refund list
-    </div>
-
-    <div class="card-body">
+<div class="card-body">
+   
+  
       <div>
           <div class="mb-3"> 
-            <select ng-model="stateVal">
+            <select ng-model="stateVal" style="height: 1.8em; width: 8em;">
                 <option ng-repeat="state in stateList">{{state}}</option>
             </select>
-            <button class="btn btn-sm btn-secondary" ng-click="getList(1, stateVal, reasonVal)">이동</button>
-            <select ng-model="reasonVal">
+            <button class="btn btn-sm btn-secondary" style="margin-bottom: 0.4em;" ng-click="getList(1, stateVal, reasonVal)">조회</button>
+            <select ng-model="reasonVal" style="margin-left:3em; height: 1.8em; width: 8em;">
                 <option ng-repeat="reason in reasonList">{{reason}}</option>
             </select>
-            <button class="btn btn-sm btn-secondary" ng-click="getList(1, stateVal, reasonVal)">이동</button>
+            <button class="btn btn-sm btn-secondary" style="margin-bottom: 0.4em;" ng-click="getList(1, stateVal, reasonVal)">조회</button>
           </div>
-         <table class="table table-striped table-bordered">
-            <tr>
+         <table class="table" style="text-align: center;">
+            <tr style="background-color: #f8f9fa;">
                 <th style="width: 15%;">주문번호</th>
                 <th>아이디</th>
-                <th style="width: 15%;">환불 상태</th>
+                <th style="width: 20%;">환불 상태</th>
                 <th style="width: 20%;">환불 사유</th>
                 <th style="width: 20%;">등록일</th>
             </tr>
@@ -33,22 +30,22 @@
             </tr>
             <tr ng-if="pager.totalRows != 0">
                 <td colspan="5" style="text-align: center;">
-                    <button class="btn btn-outline-primary btn-sm" 
+                    <button class="btn btn-outline-dark btn-sm" 
                             ng-click="getList(1, stateVal, reasonVal)">처음</button> 
-                    <button class="btn btn-outline-info btn-sm" 
+                    <button class="btn btn-outline-dark btn-sm" 
                             ng-show="pager.groupNo>1" 
                             ng-click="getList(pager.startPageNo-1, stateVal, reasonVal)">이전</button>
                     <button ng-repeat="i in pageRange"
-                            class="btn btn-sm {{(pager.pageNo==i)?'btn-danger':'btn-outline-success'}} {{!$last?'mr-1':''}}" 
+                            class="btn btn-sm {{(pager.pageNo==i)?'btn-dark':'btn-outline-dark'}} {{!$last?'mr-1':''}}" 
                             ng-click="getList(i, stateVal, reasonVal)">{{i}}</button>
-                    <button class="btn btn-outline-info btn-sm" 
+                    <button class="btn btn-outline-dark btn-sm" 
                             ng-show="pager.groupNo < pager.totalGroupNo" 
                             ng-click="getList(pager.endPageNo+1, stateVal, reasonVal)">다음</button>
-                    <button class="btn btn-outline-primary btn-sm" 
+                    <button class="btn btn-outline-dark btn-sm" 
                             ng-click="getList(pager.totalPageNo, stateVal, reasonVal)">맨끝</button>
                 </td>
             </tr>
         </table>
       </div>
-    </div>
+  
 </div>

@@ -1,0 +1,37 @@
+
+    <div class="card-body">
+        <div>
+            <div class="form-group">
+                <label>카테고리:</label>
+                <div>
+                    <input name="category" type="radio" ng-model="product.productCategoryNo" value="1">캔들
+                    <input name="category" type="radio" ng-model="product.productCategoryNo" value="2"/>조명
+                    <input name="category" type="radio" ng-model="product.productCategoryNo" value="3"/>트리
+                    <input name="category" type="radio" ng-model="product.productCategoryNo" value="4"/>기타
+                </div>
+            </div>
+            <div class="form-group">
+                <label>상품 이름:</label>
+                <input class="form-control" ng-model="product.productName"/>
+            </div>
+            <div class="form-group">
+                <label>가격:</label>
+                <input class="form-control" ng-model="product.productPrice"/>
+            </div>
+            <div class="form-group">
+                <label>대표 이미지:</label>
+                <input id="battach1" type="file" class="form-control-file"/>
+                <label>이미지:</label>
+                <input id="battach2" type="file" class="form-control-file"/>
+                <label>이미지:</label>
+                <input id="battach3" type="file" class="form-control-file"/>
+                <label>이미지:</label>
+                <input id="battach4" type="file" class="form-control-file"/>
+                <label>상세 이미지:</label>
+                <input id="battach5" type="file" class="form-control-file"/>
+            </div>
+            <button class="btn btn-primary btn-sm" ng-click="createProduct(product)">등록</button>
+            <button class="btn btn-primary btn-sm" ng-click="cancel()">취소</button>        
+        </div>        
+    </div>
+

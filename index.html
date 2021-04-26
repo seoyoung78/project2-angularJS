@@ -11,18 +11,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> 
+
+    <link rel="shortcut icon" href="/resources/img/favicon.ico" />
+    <link rel="icon" href="/resources/img/favicon.ico" />
     
     <script src="app.js"></script>  <!-- 모듈 생성 -->
     <script src="appRoute.js"></script>
 
-    <script src="controllers/homeController.js"></script>
     <script src="controllers/productsRefundController.js"></script>
-    <script src="controllers/reviewsController.js"></script>
+    <script src="controllers/reviewsController.js"></script>    
+    <script src="controllers/productController.js"></script>
+    <script src="controllers/userController.js"></script>
+    <script src="controllers/orderController.js"></script>
+    <script src="controllers/qnaController.js"></script>
 
     <script src="services/loginService.js"></script>
-    <script src="services/homeService.js"></script>
     <script src="services/reviewsService.js"></script>
-    <script src="services/productsRefundService.js"></script>
+    <script src="services/productsRefundService.js"></script>    
+    <script src="services/productService.js"></script>
+    <script src="services/userService.js"></script>    
+    <script src="services/ordersService.js"></script>
+    <script src="services/qnaService.js"></script>
 
 </head>
 <body ng-controller="mainController">
@@ -48,35 +57,34 @@
     </div>
 
     <div class="d-flex flex-column vh-100" ng-show="uid">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark text-white font-weight-bold justify-content-between">
-            <a class="navbar-brand" href="./">
-            <img src="./resources/img/장바구니.png" width="30" class="d-inline-block align-top">
+        <nav class="navbar navbar-expand-sm navbar-dark text-white font-weight-bold justify-content-between" style="background-color: #868e96;">
+            <a class="navbar-brand" href="./" style="font-size: 1.8em;">
+            <img src="./resources/img/장바구니.png" width="40" class="d-inline-block align-top">
             Santa Candy
             </a>
+            <a class="nav-link text-white" style="font-size: 1.3em;" href="/" ng-click="reloadable('home')">메인</a>
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products" ng-click="reloadable('products')"> 상품</a>
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/users" ng-click="reloadable('users')">회원</a>
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/orders" ng-click="reloadable('orders')">주문</a>  
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products_refund" ng-click="reloadable('products_refund')">환불</a>
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/reviews" ng-click="reloadable('reviews')">리뷰</a>
+            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/qna" ng-click="reloadable('qna')">문의</a> 
             <div>
-                <div ng-show="uid">
-                    ID: {{uid}} <button class="btn btn-success btn-sm ml-2" ng-click="logout()">Logout</button>
+                <div ng-show="uid" class="mt-1" style="font-size: 1.2em; font-weight: 600;">
+                    ID: {{uid}} <button class="btn btn-sm ml-2 text-white" style="background-color: #d15851;" ng-click="logout()">Logout</button>
                 </div>
             </div>
         </nav>
 
         <div class="flex-grow-1 container-fluid">
             <div class="row h-100">
-            <div class="col-md-6 col-lg-4 p-3 bg-dark">
-                <div class="h-100 d-flex flex-column">
-                <div class="flex-grow-1" style="height:0px; overflow-y: auto; overflow-x: hidden;">
-                    <ng-include src="'appMenu.html'"></ng-include>
+                <div class="col-md-6 col-lg-12 p-3 ml-1">
+                    <div class=" h-100 d-flex flex-column">
+                        <div class="flex-grow-1 overflow-auto pr-3" style="height:0px" >
+                            <ng-view/>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-8 p-3">
-                <div class=" h-100 d-flex flex-column">
-                <div class="flex-grow-1 overflow-auto pr-3" style="height:0px" >
-                    <ng-view/>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>

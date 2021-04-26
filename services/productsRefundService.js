@@ -16,6 +16,11 @@ angular.module("app")
         update: function(refund) {
           const promise = $http.put(BASE_URL, refund);
           return promise;
+        },
+        
+        count: function(countNo) {
+          const promise = $http.get(BASE_URL + "/readcount", {params:{countNo:countNo}});
+          return promise;
         }
       }
   });

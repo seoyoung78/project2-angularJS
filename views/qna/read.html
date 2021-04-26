@@ -1,41 +1,51 @@
-<div class="card">
-    <div class="card-header">
-     read.html
 
-    </div>
-
-    <div class="card-body">
-        <div>
-            <div class="form-group">
-                <label>아이디:</label>
-                <input class="form-control" value="{{qna.userId}}" readonly/>
+    <div class="card-body d-flex justify-content-center">
+        <div style="width: 50%;">
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%;  padding-left: 50px;">
+              <label style="font-weight: bold;">아이디 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.userId"></div>
+              </div>
+          </div>
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">이름 :</label>
+            <div class="ml-4">
+                <div ng-bind="qna.userName"></div>
             </div>
-            <div class="form-group">
-                <label>등록일:</label>
-                <input  class="form-control" ng-value="qna.qnaRegdate | date:'yyyy.MM.dd'" readonly/>
-            </div>
-            <div class="form-group">
-                <label>제목:</label>
-                <input class="form-control" ng-model="qna.qnaTitle" readonly/>
-            </div>
-            <div class="form-group">
-                <label>내용:</label>
-                <input class="form-control" ng-model="qna.qnaContent"readonly></input>
-            </div>
-            <div class="form-group">
-                <label>답변날짜:</label>
-                <input class="form-control" ng-value="qna.answerDate | date:'yyyy.MM.dd'"readonly></input>
-            </div>
-            <div class="form-group">
-                <label>답변내용:</label>
-                <input class="form-control" ng-model="qna.answerContent"readonly></input>
-            </div>
-            <button class="btn btn-primary btn-sm" ng-click="getList(keyword,pager.pageNo)">목록</button>
-            <button class="btn btn-primary btn-sm" ng-click="updateQnaForm()">수정</button> 
-              <button  class="btn btn-primary btn-sm" ng-click="deleteQna(qna.qnaNo)">삭제</button>       
         </div>
-
-
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+              <label style="font-weight: bold;">등록일 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.qnaRegdate | date:'yyyy.MM.dd'"></div>
+              </div>
+          </div>
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+              <label style="font-weight: bold;">제목 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.qnaTitle"></div>
+              </div>
+          </div>
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+              <label style="font-weight: bold;">내용 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.qnaContent"></div>
+              </div>
+          </div>
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+              <label style="font-weight: bold;">답변 날짜 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.answerDate | date:'yyyy.MM.dd'"></div>
+              </div>
+          </div>
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+              <label style="font-weight: bold;">답변 내용 :</label>
+              <div class="ml-4">
+                  <div ng-bind="qna.answerContent"></div>
+              </div>
+          </div>
+          <button class="btn btn-sm text-white" style="background-color: #d15851; " ng-click="getList(stateVal,pager.pageNo)">목록</button>
+          <button class="btn btn-sm text-white" style="background-color: #d15851;" ng-click="updateQnaForm()">수정</button> 
+          <button class="btn btn-sm text-white" style="background-color: #d15851;" ng-click="deleteQna(qna.qnaNo)">삭제</button>     
+      </div>
     </div>
-
-</div>
+  

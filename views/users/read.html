@@ -1,0 +1,75 @@
+
+    <div class="card-body">
+      <div>
+        <div class="form-group">
+            <label>등록일:</label>
+            <div class="form-control">{{user.userRegdate | date:"yyyy.MM.dd"}}</div>
+        </div>
+        <div class="form-group">
+            <label>아이디:</label>
+            <input class="form-control" ng-value="user.userId"/>
+        </div>
+        <div class="form-group">
+            <label>이름:</label>
+            <input class="form-control" ng-value="user.userName"/>
+        </div>
+        <div class="form-group">
+            <label>핸드폰번호:</label>
+            <input class="form-control" ng-value="user.userPhone"/>
+        </div>
+        <div class="form-group">
+            <label>우편번호:</label>
+            <input class="form-control" ng-value="user.zipCode"/>
+        </div>
+        <div class="form-group">
+            <label>주소:</label>
+            <input class="form-control" ng-value="user.roadAddress"/>
+        </div>
+        <div class="form-group">
+            <label>상세주소:</label>
+            <input class="form-control" ng-value="user.detailAddress"/>
+        </div>
+        <div class="form-group">
+            <label>주민번호 앞자리:</label>
+            <input class="form-control" ng-value="user.userSsn1"/>
+        </div>
+        <div class="form-group">
+            <label>주민번호 뒷자리:</label>
+            <input class="form-control" ng-value="user.userSsn2"/>
+        </div>
+        <div class="form-group">
+            <label>로그인 상태:</label>
+            <input class="form-control" ng-value="user.userEnabled"/>
+        </div>
+        <div class="form-group">
+            <label>권한:</label>
+            <input class="form-control" ng-value="user.userAuthority"/>
+        </div>
+        <div class="form-group">
+            <label>계좌번호:</label>
+            <input class="form-control" ng-value="user.userAccount"/>
+        </div>
+        <div class="form-group">
+            <label>은행:</label>
+            <input class="form-control" ng-value="user.userBank"/>
+        </div>
+        <div class="form-group">
+            <label>예금주:</label>
+            <input class="form-control" ng-value="user.accountName"/>
+        </div>
+        <div class="form-group">
+            <label>탈퇴 여부:</label>
+            <input class="form-control" ng-value="user.deleteState"/>
+        </div>
+        <div class="form-group">
+            <label>탈퇴 날짜:</label>
+            <div class="form-control">{{user.deleteDate | date:"yyyy.MM.dd"}}</div>
+        </div>
+        <div class="form-group">
+            <label>탈퇴 이유:</label>
+            <input class="form-control" ng-value="user.deleteReason"/>
+        </div>
+        <button class="btn btn-primary btn-sm" ng-click="getList(pager.pageNo, userStateVal)">목록</button>
+        <button class="btn btn-primary btn-sm" ng-click="updateUserForm()">수정</button>       
+    </div>
+    </div>

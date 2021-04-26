@@ -11,7 +11,32 @@ angular.module("app")
 
     $scope.$on("$routeChangeSuccess", () => {
       $scope.getList(1, "");
+      $scope.readReviewCount();
     }); 
+
+    $scope.reviewCount = [
+      {value:""},
+      {value:""},
+      {value:""}
+    ]
+
+    $scope.readReviewCount = () => {
+      reviewsService.count(0)
+        .then((response) => {
+          $scope.reviewCount[0].value = response.data;
+          console.log($scope.reviewCount[0].value);
+        });
+        reviewsService.count(1)
+        .then((response) => {
+          $scope.reviewCount[1].value = response.data;
+          console.log($scope.reviewCount[1].value);
+        });
+        reviewsService.count(2)
+        .then((response) => {
+          $scope.reviewCount[2].value = response.data;
+          console.log($scope.reviewCount[2].value);
+        });
+    }
 
     $scope.getList = (pageNo, keyword) => {
       reviewsService.list(pageNo, keyword)

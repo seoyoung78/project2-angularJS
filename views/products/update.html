@@ -1,0 +1,96 @@
+<div class="card-body d-flex justify-content-center">
+    <div style="font-size: 1.5em; width: 50%;">
+          <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%;  padding-left: 50px;">
+            <label style="font-weight: bold;">상품 번호 :</label>
+            <div class="ml-4">
+                <div ng-bind="product.productNo"></div>
+            </div>
+         </div>
+         <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">카테고리 :</label>
+            <div class="ml-4">
+                <input class="form-control" ng-value="product.productCategoryNo" ng-model="product.productCategoryNo"/>
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">상품 이름 :</label>
+            <div class="ml-4">
+                <input class="form-control" ng-value="product.productName" ng-model="product.productName" />
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">상품 가격 :</label>
+            <div class="ml-4">
+                <input class="form-control" ng-value="product.productPrice"  ng-model="product.productPrice"/>
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">품절 상태 :</label>
+            <div class="ml-4">
+                <input class="form-control" ng-value="product.productState" ng-model="product.productState" />
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">등록일 :</label>
+            <div class="ml-4">
+                <div ng-bind="product.productRegdate | date:'yyyy.MM.dd'"></div>
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">조회수 :</label>
+            <div class="ml-4">
+                <div ng-bind="product.productHitcount"></div>
+            </div>
+        </div>
+        <div class="form-group d-inline-flex" style="border-bottom: 1px solid lightgray; width: 100%; padding-left: 50px;">
+            <label style="font-weight: bold;">판매수 :</label>
+            <div class="ml-4">
+                <div ng-bind="product.productSellcount"></div>
+            </div>  
+        </div>
+        
+
+
+    <div class="form-group">
+        <div class="form-group">
+
+            <label>대표 이미지:
+            <a href="{{battachUrl(product.productNo, 0)}}">
+                <img src="{{battachUrl(product.productNo, 0)}}" width="200"/>
+            </a>
+                <input id="battach1" ng-value="{{battachUrl(product.productNo, 0)}}" type="file" class="form-control-file"/>
+            </label><br />
+            <label>이미지:
+                <a href="{{battachUrl(product.productNo, 1)}}">
+                    <img src="{{battachUrl(product.productNo, 1)}}" width="200"/>
+                </a>
+                    <input id="battach2" type="file" class="form-control-file"/>
+                </label><br />
+            <label>이미지:
+                <a href="{{battachUrl(product.productNo, 2)}}">
+                    <img src="{{battachUrl(product.productNo, 2)}}" width="200"/>
+                </a>
+                    <input id="battach3" type="file" class="form-control-file"/>
+            </label><br />
+            <label>이미지:
+                <a href="{{battachUrl(product.productNo, 3)}}">
+                    <img src="{{battachUrl(product.productNo, 3)}}" width="200"/>
+                </a>
+                    <input id="battach4" type="file" class="form-control-file"/>
+            </label><br />
+            <label>상세 이미지:
+                <a href="{{battachUrl(product.productNo, 4)}}">
+                    <img src="{{battachUrl(product.productNo, 4)}}" width="200"/>
+                </a>
+                    <input id="battach5" type="file" class="form-control-file"/>
+            </label><br />
+                
+        </div>
+                  
+                  
+          </div>
+          <button class="btn btn-sm text-white" style="background-color: #d15851;"  ng-click="updateProduct(product)">수정</button>
+          <button class="btn btn-sm text-white" style="background-color: #d15851;"  ng-click="cancelUpdate()">취소</button>        
+      </div>
+      </div>
+  

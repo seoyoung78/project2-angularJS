@@ -21,6 +21,11 @@ angular.module("app")
         delete: function(reviewNo) {
           const promise = $http.delete(BASE_URL + "/" + reviewNo);
           return promise;
+        },
+
+        count: function(countNo) {
+          const promise = $http.get(BASE_URL + "/readcount", {params: {countNo:countNo}});
+          return promise;
         }
       }
   });
