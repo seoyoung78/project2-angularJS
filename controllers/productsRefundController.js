@@ -25,7 +25,7 @@ angular.module("app")
       {value:""},
       {value:""},
       {value:""}
-    ]
+    ];
 
     $scope.readRefundCount = () => {
       productsRefundService.count(0)
@@ -43,7 +43,7 @@ angular.module("app")
           $scope.refundCount[2].value = response.data;
           //console.log($scope.refundCount[2].value);
         });
-    }
+    };
     
     $scope.getList = (pageNo, stateVal, reasonVal) => {
       productsRefundService.list(pageNo, stateVal, reasonVal)

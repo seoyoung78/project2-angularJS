@@ -131,7 +131,7 @@ angular.module("app")
         if(imgFlag1 && imgFlag2 && imgFlag3 && imgFlag4 && imgFlag5){
           productService.create(formData)
           .then((response) => {
-              $scope.getList(1);
+              $scope.getList(1, "전체", "");
               $scope.view = "list";
           });
         }else{
@@ -143,7 +143,7 @@ angular.module("app")
     };
     
     $scope.cancel = () => {
-      $scope.getList($scope.pager.pageNo);
+      $scope.getList($scope.pager.pageNo, "전체", "");
       $scope.view = "list";
     };
 
@@ -156,12 +156,13 @@ angular.module("app")
     };
 
     $scope.updateProduct = (product) => {
-      if(product.productNo && product.productCategoryNo && product.productName && product.productPrice) {
+      if(product.productNo && product.productName && product.productPrice) {
         var formData = new FormData();  //multipart 데이터 객체
         formData.append("productNo", product.productNo);
-        formData.append("productCategoryNo", product.productCategoryNo);
         formData.append("productName", product.productName);
         formData.append("productPrice", product.productPrice);
+        formData.append("productCategoryNo", product.productCategoryNo);
+    
 
         var battach1 = $("#battach1")[0].files[0];
         var battach2 = $("#battach2")[0].files[0];
@@ -189,21 +190,15 @@ angular.module("app")
           formData.append("state", 5);
         }
         
-        var categoryCk = false;
-        if(product.productCategoryNo > 0 && product.productCategoryNo < 5){
-          categoryCk = true;
-        }
         var stateCk = false;
-        if(product.productState === 0 || product.productState === 1){
+        if(product.productState === "0" || product.productState === "1"){
+          formData.append("productState", product.productState);
           stateCk = true;
         }
-
-        console.log(categoryCk);
-        console.log(stateCk);
-        if(categoryCk && stateCk){
+        if(stateCk){
         productService.update(formData)
           .then((response) => {
-              $scope.view = "read";
+              $scope.read(product.productNo);
           });
         }else{
           window.alert("정확한 값을 입력하세요.");

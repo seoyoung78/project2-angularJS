@@ -15,7 +15,7 @@ angular.module("app")
       $scope.readQnaCount();
     });
     $scope.stateList = ["전체", "미답변", "답변 완료"];
-    $scope.stateal = "전체";
+    $scope.stateVal = "전체";
    
      //상태별 인원
      $scope.qnaCount = [

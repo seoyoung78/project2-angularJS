@@ -77,9 +77,9 @@ angular.module("app")
 
     $scope.updateUser = (user) => {
       if(user.userId && user.userName && user.userPhone && user.zipCode && user.roadAddress 
-          && user.detailAddress && user.userAuthority && user.userAccount 
-          && user.userBank && user.accountName) {
+          && user.detailAddress && user.userAuthority) {
         
+          console.log(user.deleteState);
         userService.update(user)
         .then((response) => {
             $scope.read(user.userId);

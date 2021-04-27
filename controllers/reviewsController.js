@@ -18,7 +18,7 @@ angular.module("app")
       {value:""},
       {value:""},
       {value:""}
-    ]
+    ];
 
     $scope.readReviewCount = () => {
       reviewsService.count(0)
@@ -36,7 +36,7 @@ angular.module("app")
           $scope.reviewCount[2].value = response.data;
           console.log($scope.reviewCount[2].value);
         });
-    }
+    };
 
     $scope.getList = (pageNo, keyword) => {
       reviewsService.list(pageNo, keyword)

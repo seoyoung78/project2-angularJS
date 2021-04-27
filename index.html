@@ -12,8 +12,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script> 
 
+     <!-- 타이틀 -->
+    <title>SANTA CANDY</title>
+
+    <!-- 폰트 로딩 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@500&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+
     <link rel="shortcut icon" href="/resources/img/favicon.ico" />
     <link rel="icon" href="/resources/img/favicon.ico" />
+    <link rel="stylesheet" href="/resources/css/header_footer.css" rel="stylesheet">
     
     <script src="app.js"></script>  <!-- 모듈 생성 -->
     <script src="appRoute.js"></script>
@@ -24,6 +32,7 @@
     <script src="controllers/userController.js"></script>
     <script src="controllers/orderController.js"></script>
     <script src="controllers/qnaController.js"></script>
+    <script src="controllers/homeController.js"></script>
 
     <script src="services/loginService.js"></script>
     <script src="services/reviewsService.js"></script>
@@ -35,7 +44,52 @@
 
 </head>
 <body ng-controller="mainController">
-    <div class="d-flex justify-content-center mt-5" ng-show="!uid">
+ <!-- 헤더 -->
+ <div class="header">
+    <div class="top-img"></div>
+    <div class="login-out">
+    </div>
+    <div class="center-img">
+        <a href="#">
+            <div class="logo-img"></div>
+        </a>
+       
+    </div>
+    <div class="down-category">
+        <ul>
+            <li ng-show = "uid">
+                <a class="nav-link text-white" style="font-size: 1.3em;" href="/" ng-click="reloadable('home')">메인</a>
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products" ng-click="reloadable('products')"> 상품</a>
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/users" ng-click="reloadable('users')">회원</a>
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/orders" ng-click="reloadable('orders')">주문</a>  
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products_refund" ng-click="reloadable('products_refund')">환불</a>
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/reviews" ng-click="reloadable('reviews')">리뷰</a>
+            </li>
+            <li ng-show = "uid">
+                <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/qna" ng-click="reloadable('qna')">문의</a> 
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- 헤더 끝 -->
+
+    <div ng-show="uid" class="mt-3" style="font-size: 1em; font-weight: 600; padding-left: 80%;">
+        관리자 ID: {{uid}} <button class="btn btn-sm ml-2 text-white" style="background-color: #d15851;" ng-click="logout()">Logout</button>
+    </div>
+
+
+    <div class="d-flex justify-content-center mt-5" ng-show="!uid" style="clear:both;">
         <div class="card" style="width: 400px;">
             <div class="card-header">
                 Login Form
@@ -56,35 +110,17 @@
         </div>
     </div>
 
-    <div class="d-flex flex-column vh-100" ng-show="uid">
-        <nav class="navbar navbar-expand-sm navbar-dark text-white font-weight-bold justify-content-between" style="background-color: #868e96;">
-            <a class="navbar-brand" href="./" style="font-size: 1.8em;">
-            <img src="./resources/img/장바구니.png" width="40" class="d-inline-block align-top">
-            Santa Candy
-            </a>
-            <a class="nav-link text-white" style="font-size: 1.3em;" href="/" ng-click="reloadable('home')">메인</a>
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products" ng-click="reloadable('products')"> 상품</a>
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/users" ng-click="reloadable('users')">회원</a>
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/orders" ng-click="reloadable('orders')">주문</a>  
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/products_refund" ng-click="reloadable('products_refund')">환불</a>
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/reviews" ng-click="reloadable('reviews')">리뷰</a>
-            <a class="nav-link" style="color: white; font-size: 1.3em;" href="/#!/qna" ng-click="reloadable('qna')">문의</a> 
-            <div>
-                <div ng-show="uid" class="mt-1" style="font-size: 1.2em; font-weight: 600;">
-                    ID: {{uid}} <button class="btn btn-sm ml-2 text-white" style="background-color: #d15851;" ng-click="logout()">Logout</button>
-                </div>
-            </div>
-        </nav>
-
+    <div class="d-flex flex-column vh-100 vw-80" ng-show="uid">
         <div class="flex-grow-1 container-fluid">
             <div class="row h-100">
-                <div class="col-md-6 col-lg-12 p-3 ml-1">
-                    <div class=" h-100 d-flex flex-column">
-                        <div class="flex-grow-1 overflow-auto pr-3" style="height:0px" >
-                            <ng-view/>
-                        </div>
-                    </div>
+
+            <div class="col-md-6 col-lg-12 p-3 ml-1">
+                <div class=" h-100 d-flex flex-column">
+                <div class="flex-grow-1 overflow-auto pr-3">
+                    <ng-view/>
                 </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>

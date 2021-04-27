@@ -9,33 +9,42 @@ angular.module("app")
            const promise = $http.get(BASE_URL, {params:{pageNo, categoryVal, keyword}});
            return promise;
         },
+
         read: function(pid){
             const promise = $http.get(BASE_URL + "/" + pid);
             return promise;
         },
+
         readCount: function(cno){
-            const promise = $http.get(BASE_URL + "/readCount", {params:{cno}});
+            const promise = $http.get(BASE_URL + "/readcount", {params:{cno}});
             return promise;
         },
+
         battachUrl: function(pid, i){
             // const promise = $http.get(BASE_URL + "/battach/" + pid);
             // return promise;
             return BASE_URL + "/battach/" + pid + "/" + i;
         },
+
         create: function(formData){
             console.log("creat 실행");
             const promise = $http.post(BASE_URL, formData, {headers:{"Content-Type":undefined}});
             return promise;
-
         },
+
         update: function(formData) {
             const promise = $http.put(BASE_URL, formData, {headers:{"Content-Type":undefined}});
             return promise;
         },
+        
         delete: function(pid) {
             const promise = $http.delete(BASE_URL + "/" + pid);
             return promise;
-          }
-    
+        },
+
+        bestMain: function () {
+            const promise = $http.get(BASE_URL + "/pcount");
+            return promise;
+        }    
     };
 });
