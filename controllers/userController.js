@@ -2,7 +2,7 @@ angular.module("app")
   .controller("userController", function($scope, userService, $rootScope) {
     //처음 실행 시 무조건 첫 페이지
     $scope.$on("$routeChangeSuccess", () => {
-      $scope.getList(1, "전체", "");
+      $scope.getList(1);
       $scope.readUserCount();
     }); 
 
@@ -17,8 +17,8 @@ angular.module("app")
       }
     };
 
-    $scope.getList = (pageNo, userStateVal, idKeywordVal) => {
-      userService.list(pageNo, userStateVal, idKeywordVal)
+    $scope.getList = (pageNo) => {
+      userService.list(pageNo, $scope.userStateVal, $scope.idKeywordVal)
         .then((response) => { //jQuery에서는 response 대신 data
           $scope.pager = response.data.pager;
           $scope.users = response.data.users;
@@ -100,14 +100,11 @@ angular.module("app")
       return $scope.userStateVal;
     };
 
-    $scope.userStateButton = (userStateVal) => {
+    
+    $scope.idKeywordButton = (userStateVal,idKeywordVal) => {
       $scope.userStateVal = userStateVal;
-      $scope.getList(1, userStateVal, ""); 
-    };
-
-    $scope.idKeywordButton = (idKeywordVal) => {
       $scope.idKeywordVal = idKeywordVal;
-      $scope.getList(1, "", idKeywordVal);
+      $scope.getList(1);
     };
 
 

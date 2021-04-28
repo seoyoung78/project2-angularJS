@@ -11,12 +11,12 @@ angular.module("app")
     };
 
     $scope.$on("$routeChangeSuccess", () => {
-      $scope.getList(1, "전체", "");
+      $scope.getList(1);
       $scope.readProductCount();
     }); 
     
-    $scope.getList = (pageNo, categoryVal, keyword) => {
-      productService.list(pageNo, categoryVal, keyword)
+    $scope.getList = (pageNo) => {
+      productService.list(pageNo, $scope.categoryVal, $scope.keyword)
         .then((response) => { //jQuery에서는 response 대신 data
           $scope.pager = response.data.pager;
           $scope.products = response.data.products;
@@ -28,12 +28,10 @@ angular.module("app")
         });
     };
 
-    $scope.categoryButton = (categoryVal) => {
-      $scope.getList(1, categoryVal); 
-    };
-
     $scope.keywordButton = (categoryVal, keyword) => {
-      $scope.getList(1, categoryVal, keyword);
+      $scope.categoryVal = categoryVal;
+      $scope.keyword = keyword;
+      $scope.getList(1);
     };
     
     $scope.read = (pid) => {
@@ -56,27 +54,22 @@ angular.module("app")
         productService.readCount(0)
           .then((response) => {
             $scope.productCount[0].value = response.data;
-            console.log($scope.productCount[0].value);
         });
         productService.readCount(1)
           .then((response) => {
             $scope.productCount[1].value = response.data;
-            console.log($scope.productCount[1].value);
         });
         productService.readCount(2)
         .then((response) => {
           $scope.productCount[2].value = response.data;
-          console.log($scope.productCount[2].value);
         });
         productService.readCount(3)
         .then((response) => {
           $scope.productCount[3].value = response.data;
-          console.log($scope.productCount[3].value);
         });
         productService.readCount(4)
         .then((response) => {
           $scope.productCount[4].value = response.data;
-          console.log($scope.productCount[4].value);
         });
     };    
 
@@ -143,7 +136,7 @@ angular.module("app")
     };
     
     $scope.cancel = () => {
-      $scope.getList($scope.pager.pageNo, "전체", "");
+      $scope.getList($scope.pager.pageNo);
       $scope.view = "list";
     };
 

@@ -6,11 +6,10 @@
             <select ng-model="stateVal" style="height: 1.8em; width: 8em;">
                 <option ng-repeat="state in stateList">{{state}}</option>
             </select>
-            <button class="btn btn-sm btn-secondary" style="margin-bottom: 0.4em;" ng-click="getList(1, stateVal, reasonVal)">조회</button>
-            <select ng-model="reasonVal" style="margin-left:3em; height: 1.8em; width: 8em;">
+            <select ng-model="reasonVal" style="margin-left:0.5em; height: 1.8em; width: 8em;">
                 <option ng-repeat="reason in reasonList">{{reason}}</option>
             </select>
-            <button class="btn btn-sm btn-secondary" style="margin-bottom: 0.4em;" ng-click="getList(1, stateVal, reasonVal)">조회</button>
+            <button class="btn btn-sm btn-secondary ml-1" style="margin-bottom: 0.4em;" ng-click="getList(1, stateVal, reasonVal)">조회</button>
           </div>
          <table class="table" style="text-align: center;">
             <tr style="background-color: #f8f9fa;">

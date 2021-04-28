@@ -7,21 +7,15 @@
             <select ng-model="categoryVal" style="width: 5em; height: 2em;">
               <option ng-repeat="category in categoryList">{{category}}</option>
             </select>
-            <button class="btn btn-secondary btn-sm mb-1" ng-click="categoryButton(categoryVal)">조회</button>
+            <input class="" type="text" ng-model="keyword" placeholder="상품 이름을 입력하세요."/>
+            <button class="btn btn-sm btn-secondary" ng-click="keywordButton(categoryVal, keyword)" style="margin-bottom: 5px;">검색</button>
           </div>
           
           <div class="mb-3" ng-show="uid">
             <button class="btn btn-m text-white" style="background-color: #d15851;" ng-click="createProductForm()">상품 등록</button>
           </div>
-
         </div>
 
-        <div>
-          <input class="" type="text" ng-model="keyword" placeholder="상품 이름을 입력하세요."/>
-          <button class="btn btn-sm btn-secondary" ng-click="keywordButton(categoryVal, keyword)" style="margin-bottom: 5px;">검색</button>
-        </div>
-
-        
         <table class="table mt-3">
             <tr style="text-align: center; background-color: #f8f9fa;">
                 <th style="width: 10%;">번호</th>
@@ -46,18 +40,18 @@
                <tr>
                   <td colspan="6" style="text-align: center;">
                      <button class="btn btn-outline-dark btn-sm" 
-                                 ng-click="getList(1, categoryVal, keyword)">처음</button> 
+                                 ng-click="getList(1)">처음</button> 
                      <button   class="btn btn-outline-dark btn-sm" 
                                  ng-show="pager.groupNo>1" 
-                                 ng-click="getList(pager.startPageNo-1, categoryVal, keyword)">이전</button>
+                                 ng-click="getList(pager.startPageNo-1)">이전</button>
                      <button ng-repeat="i in pageRange"
                                 class="btn btn-sm {{(pager.pageNo==i)?'btn-dark':'btn-outline-dark'}} {{!$last?'mr-1':''}}" 
-                                 ng-click="getList(i, categoryVal, keyword)">{{i}}</button>
+                                 ng-click="getList(i)">{{i}}</button>
                      <button   class="btn btn-outline-dark btn-sm" 
                                  ng-show="pager.groupNo < pager.totalGroupNo" 
-                                 ng-click="getList(pager.endPageNo+1, categoryVal, keyword)">다음</button>
+                                 ng-click="getList(pager.endPageNo+1)">다음</button>
                      <button class="btn btn-outline-dark btn-sm" 
-                                 ng-click="getList(pager.totalPageNo, categoryVal, keyword)">맨끝</button>
+                                 ng-click="getList(pager.totalPageNo)">맨끝</button>
                   </td>
                </tr>
         </table>
