@@ -1,5 +1,5 @@
 angular.module("app", ["ngRoute"]) 
-    .config(function($logProvider) {   
+    .config(function($logProvider) {    
         $logProvider.debugEnabled(false);
     })
     .run(function($rootScope, $http) {   // 모듈 마다 생성 가능 - 전역 데이터, application 실행할 때마다 자동 실행    
@@ -10,7 +10,8 @@ angular.module("app", ["ngRoute"])
         //$rootScpoe.authToken의 값의 변화를 감시
         $rootScope.$watch("authToken", (newValue) => {
             if(newValue) {
-                $http.defaults.headers.common.authToken = newValue;
+                $http.defaults.headers.common.authToken = newValue;              
+            } else {
                 delete $http.defaults.headers.common.authToken;
             }
         });
@@ -36,7 +37,7 @@ angular.module("app", ["ngRoute"])
           };
 
         $scope.logout = () => {
-            $rootScope.uid = null;
+            $rootScope.uid = null;  //바인딩 되어 있을 경우 더 나은 방법
             $rootScope.authToken = "";
             sessionStorage.removeItem("uid");
             sessionStorage.removeItem("authToken");
