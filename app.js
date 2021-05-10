@@ -10,17 +10,13 @@ angular.module("app", ["ngRoute"]) // 모듈 생성 - 이름 : app, 외부 모�
         //$rootScpoe.authToken의 값의 변화를 감시
         $rootScope.$watch("authToken", (newValue) => {
             if(newValue) {
-                $http.defaults.headers.common.authToken = newValue;
-                // sessionStorage.setItem("uid", response.data.uid);
-                // sessionStorage.setItem("authToken", response.data.authToken);                
+                $http.defaults.headers.common.authToken = newValue;             
             } else {
                 delete $http.defaults.headers.common.authToken;
-                // sessionStorage.removeItem("uid");
-                // sessionStorage.removeItem("authToken");
             }
         });
     })
-    //중첩된 컨트로러 범위에서 사용할 수 있는 상태 데이터 및 함수
+    
     .controller("mainController", function($rootScope, $scope, $location, $route, $window, loginService) {
         $scope.login = (user) => {
             $scope.user = null;
@@ -41,8 +37,7 @@ angular.module("app", ["ngRoute"]) // 모듈 생성 - 이름 : app, 외부 모�
           };
 
         $scope.logout = () => {
-            $rootScope.uid = null;  //바인딩 되어 있을 경우 더 나은 방법
-            //delete $rootScope.uid;  //uid를 날려버림
+            $rootScope.uid = null;
             $rootScope.authToken = "";
             sessionStorage.removeItem("uid");
             sessionStorage.removeItem("authToken");
